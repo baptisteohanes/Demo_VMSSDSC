@@ -47,44 +47,25 @@
                 "description": "Admin password on all VMs."
             }
         },
-        
-    "frontEndDSCVMSSUpdateTagVersion": {
-
-        "type": "string",
-  
-        "defaultValue": "1.0",
-  
-        "metadata": {
-  
-          "description": "This value must be changed from a previous deployment to ensure the extension will run"
-  
+        "frontEndDSCVMSSUpdateTagVersion": {
+            "type": "string",
+            "defaultValue": "1.0",
+            "metadata": {
+                "description": "This value must be changed from a previous deployment to ensure the extension will run"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+            }
+        },
+        "_artifactsLocationSasToken": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Auto-generated token to access _artifactsLocation"
+            }
         }
-  
-      },
-      
-    "_artifactsLocation": {
-
-        "type": "string",
-  
-        "metadata": {
-  
-          "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
-  
-        }
-  
-      },
-  
-      "_artifactsLocationSasToken": {
-  
-        "type": "securestring",
-  
-        "metadata": {
-  
-          "description": "Auto-generated token to access _artifactsLocation"
-  
-        }
-  
-      }
     },
     "variables": {
         "namingInfix": "[toLower(substring(concat(parameters('vmssName'), uniqueString(resourceGroup().id)), 0, 9))]",
@@ -110,10 +91,8 @@
         "appGwFrontendPort": 80,
         "appGwBackendPort": 80,
         "appGwBePoolName": "[concat(variables('namingInfix'), 'appGwBepool')]",
-        
-    "frontEndDSCVMSSArchiveFolder": "dsc",
-
-    "frontEndDSCVMSSArchiveFileName": "WebServerDSC.zip"
+        "frontEndDSCVMSSArchiveFolder": "dsc",
+        "frontEndDSCVMSSArchiveFileName": "WebServerDSC.zip"
     },
     "resources": [
         {
