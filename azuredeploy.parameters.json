@@ -19,6 +19,9 @@
       },
       "adminPassword": {
         "value": "J@ZUR3GR@V32018"
+      },
+      "_artifactsLocation": {
+        "value": "https://raw.githubusercontent.com/baptisteohanes/Demo_VMSSDSC"
       }
     }
   }
