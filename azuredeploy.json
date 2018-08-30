@@ -57,12 +57,7 @@
         "subnetName": "[concat(variables('namingInfix'), 'subnet')]",
         "nicName": "[concat(variables('namingInfix'), 'nic')]",
         "ipConfigName": "[concat(variables('namingInfix'), 'ipconfig')]",
-        "imageReference": {
-            "publisher": "MicrosoftWindowsServer",
-            "offer": "WindowsServer",
-            "sku": "[parameters('windowsOSVersion')]",
-            "version": "latest"
-        },
+        "imageName": "IISstopped-IMG",
         "appGwPublicIPAddressName": "[concat(variables('namingInfix'), 'appGwPip')]",
         "appGwName": "[concat(variables('namingInfix'), 'appGw')]",
         "appGwPublicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('appGwPublicIPAddressName'))]",
@@ -218,20 +213,22 @@
                 "capacity": "[parameters('instanceCount')]"
             },
             "properties": {
-                "overprovision": "true",
+                "overprovision": "false",
                 "singlePlacementGroup": "false",
                 "upgradePolicy": {
                     "mode": "Automatic"
                 },
                 "virtualMachineProfile": {
+
                     "storageProfile": {
-                        "osDisk": {
-                            "caching": "ReadWrite",
-                            "createOption": "FromImage"
-                        },
-                        "dataDisks": [],
-                        "imageReference": "[variables('imageReference')]"
-                    },
+
+                        "imageReference": {
+            
+                          "id": "[resourceId('Microsoft.Compute/images', variables('imageName'))]"
+            
+                        }
+            
+                      },
                     "osProfile": {
                         "computerNamePrefix": "[variables('namingInfix')]",
                         "adminUsername": "[parameters('adminUsername')]",
