@@ -20,8 +20,8 @@
       "adminPassword": {
         "value": "J@ZUR3GR@V32018"
       },
-      "_artifactsLocation": {
-        "value": "https://raw.githubusercontent.com/baptisteohanes/Demo_VMSSDSC"
+      "CustomScriptPath": {
+        "value": "https://testvmsscse.blob.core.windows.net/scripts/startwebsite.ps1"
       }
     }
   }

@@ -4,7 +4,7 @@
     "parameters": {
         "vmSku": {
             "type": "string",
-            "defaultValue": "Standard_A1",
+            "defaultValue": "Standard_D4_v3",
             "metadata": {
                 "description": "Size of VMs in the VM Scale Set."
             }
@@ -42,24 +42,10 @@
                 "description": "Admin password on all VMs."
             }
         },
-        "frontEndDSCVMSSUpdateTagVersion": {
-            "type": "string",
-            "defaultValue": "1.0",
-            "metadata": {
-                "description": "This value must be changed from a previous deployment to ensure the extension will run"
-            }
-        },
-        "_artifactsLocation": {
+        "CustomScriptPath": {
             "type": "string",
             "metadata": {
                 "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
-            }
-        },
-        "_artifactsLocationSasToken": {
-            "type": "securestring",
-            "defaultValue": "",
-            "metadata": {
-                "description": "Auto-generated token to access _artifactsLocation"
             }
         }
     },
@@ -86,9 +72,7 @@
         "appGwSubnetID": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('appGwSubnetName'))]",
         "appGwFrontendPort": 80,
         "appGwBackendPort": 80,
-        "appGwBePoolName": "[concat(variables('namingInfix'), 'appGwBepool')]",
-        "frontEndDSCVMSSArchiveFolder": "dsc",
-        "frontEndDSCVMSSArchiveFileName": "WebServerDSC.zip"
+        "appGwBePoolName": "[concat(variables('namingInfix'), 'appGwBepool')]"
     },
     "resources": [
         {
@@ -286,13 +270,13 @@
                                     "publisher": "Microsoft.Compute",
                                     "settings": {
                                         "fileUris": [
-                                            "[concat(parameters('_artifactsLocation'), '/scripts/startwebsite.ps1')]"
+                                            "[parameters('CustomScriptPath')]"
                                         ]
                                     },
                                     "typeHandlerVersion": "1.8",
                                     "autoUpgradeMinorVersion": true,
                                     "protectedSettings": {
-                                        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File helloWorld.ps1"
+                                        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File startwebsite.ps1"
                                     },
                                     "type": "CustomScriptExtension"
                                 }
