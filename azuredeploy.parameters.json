@@ -18,7 +18,7 @@
         "value": "J@ZUR3GR@V32018"
       },
       "CustomScriptPath": {
-        "value": "https://testvmsscse.blob.core.windows.net/scripts/startwebsite.ps1"
+        "value": "https://vmsssources.blob.core.windows.net/script/startwebsite.ps1"
       }
     }
   }
