@@ -9,13 +9,6 @@
                 "description": "Size of VMs in the VM Scale Set."
             }
         },
-        "windowsOSVersion": {
-            "type": "string",
-            "defaultValue": "2016-Datacenter",
-            "metadata": {
-                "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version. Allowed values: 2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacenter."
-            }
-        },
         "vmssName": {
             "type": "string",
             "metadata": {
@@ -57,7 +50,7 @@
         "subnetName": "[concat(variables('namingInfix'), 'subnet')]",
         "nicName": "[concat(variables('namingInfix'), 'nic')]",
         "ipConfigName": "[concat(variables('namingInfix'), 'ipconfig')]",
-        "imageName": "IISstopped-IMG",
+        "imageName": "IISstopped",
         "appGwPublicIPAddressName": "[concat(variables('namingInfix'), 'appGwPip')]",
         "appGwName": "[concat(variables('namingInfix'), 'appGw')]",
         "appGwPublicIPAddressID": "[resourceId('Microsoft.Network/publicIPAddresses',variables('appGwPublicIPAddressName'))]",

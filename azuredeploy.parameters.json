@@ -5,9 +5,6 @@
       "vmSku": {
         "value": "Standard_D4_v3"
       },
-      "windowsOSVersion": {
-        "value": "2016-Datacenter"
-      },
       "vmssName": {
         "value": "VMSSDSC"
       },
