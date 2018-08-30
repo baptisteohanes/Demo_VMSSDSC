@@ -281,23 +281,20 @@
                     "extensionProfile": {
                         "extensions": [
                             {
-                                "name": "Microsoft.Powershell.DSC",
+                                "name": "customScript",
                                 "properties": {
-                                    "publisher": "Microsoft.Powershell",
-                                    "type": "DSC",
-                                    "typeHandlerVersion": "2.9",
-                                    "autoUpgradeMinorVersion": true,
-                                    "forceUpdateTag": "[parameters('frontEndDSCVMSSUpdateTagVersion')]",
+                                    "publisher": "Microsoft.Compute",
                                     "settings": {
-                                        "configuration": {
-                                            "url": "[concat(parameters('_artifactsLocation'), '/', variables('frontEndDSCVMSSArchiveFolder'), '/', variables('frontEndDSCVMSSArchiveFileName'))]",
-                                            "script": "WebServerDSC.ps1",
-                                            "function": "Main"
-                                        }
+                                        "fileUris": [
+                                            "[concat(parameters('_artifactsLocation'), '/scripts/startwebsite.ps1')]"
+                                        ]
                                     },
+                                    "typeHandlerVersion": "1.8",
+                                    "autoUpgradeMinorVersion": true,
                                     "protectedSettings": {
-                                        "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
-                                    }
+                                        "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File helloWorld.ps1"
+                                    },
+                                    "type": "CustomScriptExtension"
                                 }
                             }
                         ]
